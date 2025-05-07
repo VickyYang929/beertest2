@@ -454,6 +454,46 @@ function runQuizUI() {
         window.__fetchCourse = __fetchCourse
       })()
     </script>
+    <script>
+  // 把你目前的完整 JS 放在这里，例如：
+  (() => {
+    let hasRun = false;
+    let tries = 0;
+    const maxTries = 20;
+
+    const tryRun = () => {
+      const quizReady = document.querySelector('[data-block-id="cmad1g2v2000h3b7ynrc8sl2l"]');
+      const coverReady = document.querySelector("div.cover__header-content");
+
+      if (quizReady && coverReady && !hasRun) {
+        try {
+          runCoverUI();
+          runQuizUI();
+          hasRun = true;
+          console.log("✅ PowerUp enhancements applied!");
+        } catch (e) {
+          console.error("❌ PowerUp error:", e);
+        }
+      }
+
+      tries++;
+      if (!hasRun && tries < maxTries) {
+        setTimeout(tryRun, 500);
+      }
+    };
+
+    tryRun();
+
+    function runCoverUI() {
+      // cover 美化代码
+    }
+
+    function runQuizUI() {
+      // quiz 美化 + carousel 切换逻辑
+    }
+  })();
+</script>
+
   </head>
   <script>
   // 把你目前的完整 JS 放在这里，例如：
